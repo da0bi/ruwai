@@ -182,12 +182,12 @@ print("-------------------------------------------------------------------------
 sr_dir = "sr" + str(datetime.today().strftime("%Y%m%d"))
 st_dir = str(station) + "_sn_" + str(sn)
 if option == '1':
-    st_dir = st_dir + "_1_BEX"
+    st_dir = st_dir + "_1_bX"
     logger.info("\n--------------------------------------------------------------------------")
     logger.info("This is the service BEFORE the sd card exchange.")
     logger.info("--------------------------------------------------------------------------")
 elif option == '2':
-    st_dir = st_dir + "_2_AEX"
+    st_dir = st_dir + "_2_aX"
     logger.info("\n--------------------------------------------------------------------------")
     logger.info("This is the service AFTER the sd card exchange.")
     logger.info("--------------------------------------------------------------------------")
@@ -333,7 +333,7 @@ Ruwai data download
 # Prompt for download options.
 option = input(
     """Download options:\n
-\t0. Download the current mseed_tmp directory.
+\t0. Continue without any data download.
 \t1. Download the current mseed_tmp directory.
 \t2. Download all the log and mseed directories of the sd-card.
 \t3. Download all the log and mseed directories and clear the sd-card.\n
