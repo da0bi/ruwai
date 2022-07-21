@@ -195,6 +195,7 @@ elif option == '2':
 # Create full path of directories
 path = pathlib.Path(
     str(pathlib.Path().absolute()),
+    'data',
     str(datetime.today().year),
     network,
     sr_dir,
