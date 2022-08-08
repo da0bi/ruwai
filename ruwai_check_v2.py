@@ -46,7 +46,8 @@ SBK_stations = {
     "00006": "OBS",
     "0000B": "PIL",
     "00009": "MOR",
-    "00008": "MIT",
+#    "00008": "MIT",
+    "0000N": "MIT",
     "00004": "STO",
 }
 
@@ -129,8 +130,11 @@ logger.info(
 Welcome to the Ruwai service script.
 ************************************
 """
+"\nCurrent date and utc-time: \t"
++ datetime.now().strftime("%Y-%m-%d %H:%M:%S")
++ "\nCurrent day of year: \t\t"
++ datetime.today().strftime("%j")
 )
-
 
 #################################
 # SSH CONNECTION
@@ -292,6 +296,7 @@ for line in p1.stdout:
 logger.info("\n\n--------------------------------------------------------------------------")
 logger.info("Last log-file output:")
 logger.info("--------------------------------------------------------------------------")
+f = log_dest + "/ruwai.log"
 s = "ruwaicom\[" + str(pid) + "\]"
 command = "cat " + f + ' | grep -a "' + s + '" | tail -n 10'
 # Way to capture the subprocess output in the log-file
@@ -309,13 +314,7 @@ logger.info(output)
 
 # List all directories in /media/sd/mseed/.
 logger.info("\n\n--------------------------------------------------------------------------")
-logger.info(
-    "Date of today: \t"
-    + datetime.today().strftime("%Y-%m-%d")
-    + "\nDay of year: \t"
-    + datetime.today().strftime("%j")
-)
-logger.info("\nCurrent directories in /media/sd/mseed/" + str(datetime.today().year) + "/:")
+logger.info("Current directories in /media/sd/mseed/" + str(datetime.today().year) + "/:")
 logger.info("--------------------------------------------------------------------------")
 output = ssh.execute_command("ls /media/sd/mseed/" + str(datetime.today().year))
 logger.info(output)
